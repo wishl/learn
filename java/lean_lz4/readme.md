@@ -19,7 +19,13 @@ kryo的对象本身不是线程安全的，所以我们有两种选择来保障�
 
 4.实例化器  
 4.1 StdInstantiatorStrategy 使用依据JVM version信息及JVM vendor信息创建对象，不用调用构造方法。  
-4.2 DefaultInstantiatorStrategy 调用无参构造方式构造对象。
+4.2 DefaultInstantiatorStrategy 调用无参构造方式构造对象。  
+
+5.缺点
+5.1在序列化时如果使用了StdInstantiatorStrategy不会调用构造方法，导致一些初始化值的操作没有执行报出空指针异常  
+5.2如果类添加了字段，反序列化时就会报错
+
+
 
 
 参考资料：https://www.jianshu.com/p/824e1cf4f920  

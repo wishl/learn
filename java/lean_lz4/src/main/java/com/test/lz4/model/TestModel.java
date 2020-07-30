@@ -22,4 +22,19 @@ public class TestModel implements Serializable {
     public void setAge(Integer age) {
         this.age = age;
     }
+
+    @Override
+    public String toString() {
+        return "TestModel{" +
+                "name='" + name + '\'' +
+                ", age=" + age +
+                '}';
+    }
+
+    public static TestModel createTestModel() {
+        TestModel testModel = new TestModel();
+        testModel.setAge(18);
+        testModel.setName("gmy");
+        return testModel;
+    }
 }
