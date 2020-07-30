@@ -18,7 +18,7 @@ kryo可以把对象信息直接写到序列化数据里，反序列化的时候�
 kryo的对象本身不是线程安全的，所以我们有两种选择来保障线程安全。可以使用ThreadLocal保证线程安全。或者使用kryo提供的pool  
 
 4.实例化器  
-4.1 StdInstantiatorStrategy 使用依据JVM version信息及JVM vendor信息创建对象，不用调用构造方法。
+4.1 StdInstantiatorStrategy 使用依据JVM version信息及JVM vendor信息创建对象，不用调用构造方法。  
 4.2 DefaultInstantiatorStrategy 调用无参构造方式构造对象。
 
 
