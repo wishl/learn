@@ -1,7 +1,8 @@
 package com.test.lz4;
 
-import com.test.lz4.agent.ObjectSizeFetcher;
+import com.test.agent.ObjectAgent;
 import com.test.lz4.model.TestModel;
+import jdk.nashorn.internal.ir.debug.ObjectSizeCalculator;
 import net.jpountz.lz4.LZ4BlockInputStream;
 import net.jpountz.lz4.LZ4BlockOutputStream;
 import net.jpountz.lz4.LZ4Compressor;
@@ -15,6 +16,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.Map;
 
 public class Lz4CompressTest {
 
@@ -93,18 +95,34 @@ public class Lz4CompressTest {
 //        System.out.println(new String(result));
 //    }
 
-    public static void main(String[] args) throws IOException, ClassNotFoundException {
-        TestModel testModel = new TestModel();
-        testModel.setAge(18);
-        testModel.setName("gmy");
-        ByteArrayOutputStream bos = new ByteArrayOutputStream();
-        ObjectOutputStream oos = new ObjectOutputStream(bos);
-        oos.writeObject(testModel);
-        byte[] bytes = compressObject(testModel);
-        System.out.println(Arrays.toString(bos.toByteArray()));
-        System.out.println(Arrays.toString(bytes));
-        Object object = deCompressObject(bytes);
-        System.out.println(object);
+//    public static void main(String[] args) throws IOException, ClassNotFoundException {
+//        TestModel testModel = new TestModel();
+//        testModel.setAge(18);
+//        testModel.setName("gmy");
+//        ByteArrayOutputStream bos = new ByteArrayOutputStream();
+//        ObjectOutputStream oos = new ObjectOutputStream(bos);
+//        oos.writeObject(testModel);
+//        byte[] bytes = compressObject(testModel);
+//        System.out.println(Arrays.toString(bos.toByteArray()));
+//        System.out.println(Arrays.toString(bytes));
+//        Object object = deCompressObject(bytes);
+//        System.out.println(object);
+//        long objectSize = ObjectAgent.getObjectSize(object);
+//        System.out.println(objectSize);
+//    }
+
+    public static void main(String[] args) throws IOException {
+        Map<String, Boolean> map = new HashMap<>();
+        String keyPrefix = "hag_test_";
+        for (int i = 0; i < 2000000; i++) {
+            map.put(keyPrefix + i, true);
+        }
+        // 214M
+        System.out.println(ObjectSizeCalculator.getObjectSize(map));
+        System.out.println(ObjectSizeCalculator.getObjectSize(new Integer(1234)));
+        byte[] bytes = compressObject(map);
+        // 13M
+        System.out.println(ObjectSizeCalculator.getObjectSize(bytes));
     }
 
 }
