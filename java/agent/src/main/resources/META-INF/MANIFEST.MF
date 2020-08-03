@@ -1,3 +1,5 @@
 Manifest-Version: 1.0
 Premain-Class: com.test.agent.ObjectAgent
 Can-Redefine-Classes: true
+Boot-Class-Path: javassist-3.12.1-GA.jar
+
