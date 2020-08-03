@@ -1,7 +1,5 @@
 package com.test.lz4;
 
-import com.test.agent.ObjectAgent;
-import com.test.lz4.model.TestModel;
 import jdk.nashorn.internal.ir.debug.ObjectSizeCalculator;
 import net.jpountz.lz4.LZ4BlockInputStream;
 import net.jpountz.lz4.LZ4BlockOutputStream;
@@ -14,7 +12,6 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
