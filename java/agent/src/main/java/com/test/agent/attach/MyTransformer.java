@@ -1,20 +1,16 @@
 package com.test.agent.attach;
 
 import com.test.agent.annon.MethodTiming;
-import com.test.agent.annon.Timing;
 import javassist.CannotCompileException;
 import javassist.ClassPool;
 import javassist.CtClass;
 import javassist.CtMethod;
 import javassist.CtNewMethod;
-import javassist.NotFoundException;
 
-import java.io.IOException;
 import java.lang.instrument.ClassFileTransformer;
 import java.lang.instrument.IllegalClassFormatException;
 import java.security.ProtectionDomain;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -91,18 +87,8 @@ public class MyTransformer implements ClassFileTransformer {
                         ctmethod.setName(newMethodName);// 将原来的方法名字修改
                         // 创建新的方法，复制原来的方法，名字为原来的名字
                         CtMethod newMethod = CtNewMethod.copy(ctmethod, methodName, ctClass, null);
-
                         // 构建新的方法体
-                        StringBuilder bodyStr = new StringBuilder();
-                        bodyStr.append("{");
-                        bodyStr.append(prefix);
-                        bodyStr.append("Object object = " + newMethodName + "($$);\n");// 调用原有代码，类似于method();($$)表示所有的参数
-                        bodyStr.append(postfix);
-                        bodyStr.append(outputStr);
-                        bodyStr.append("return ($r) object;\n");
-                        bodyStr.append("}");
-                        newMethod.setBody(bodyStr.toString());// 替换新方法
-                        ctClass.addMethod(newMethod);// 增加新方法
+                        buildMethod(newMethodName, outputStr, newMethod, ctClass);
                     } catch (Exception e) {
                     }
                 }
@@ -115,6 +101,21 @@ public class MyTransformer implements ClassFileTransformer {
             System.out.println("className:" + className);
         }
         return null;
+    }
+
+    // 创建新的方法，复制原来的方法，名字为原来的名字
+    private void buildMethod(String newMethodName, String outputStr, CtMethod newMethod, CtClass ctClass)
+            throws CannotCompileException {
+        StringBuilder bodyStr = new StringBuilder();
+        bodyStr.append("{");
+        bodyStr.append(prefix);
+        bodyStr.append("Object object = " + newMethodName + "($$);\n");// 调用原有代码，类似于method();($$)表示所有的参数
+        bodyStr.append(postfix);
+        bodyStr.append(outputStr);
+        bodyStr.append("return ($r) object;\n");
+        bodyStr.append("}");
+        newMethod.setBody(bodyStr.toString());// 替换新方法
+        ctClass.addMethod(newMethod);// 增加新方法
     }
 
 
