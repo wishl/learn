@@ -4,6 +4,7 @@ import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryo.io.Input;
 import com.esotericsoftware.kryo.io.Output;
 import com.esotericsoftware.kryo.pool.KryoPool;
+import com.test.agent.annon.MethodTiming;
 import com.test.lz4.model.TestModel;
 import org.objenesis.strategy.StdInstantiatorStrategy;
 
@@ -40,6 +41,7 @@ public class KryoCommon {
         });
     }
 
+    @MethodTiming
     public static <T> T readObject(byte[] bytes, Class<T> clazz) {
         ByteArrayInputStream bis = new ByteArrayInputStream(bytes);
         Input input = new Input(bis);
