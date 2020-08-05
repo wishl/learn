@@ -97,6 +97,82 @@ a63[1::2,::2] = 1
 a63[::2,1::2] = 1
 a64 = np.ones((5,3))
 a65 = np.ones((3,2))
-print(a64)
-print(a65)
-print(a64 @ a65)
+# print(a64)
+# print(a65)
+# print(a64 @ a65)
+
+# a66 = np.array(((1,2,3),(3,4,5)))
+# a67 = a66[1,:2]
+# print(a67)
+
+#numpy中的matrix与array的区别
+    #Numpy matrices必须是2维的,但是 numpy arrays (ndarrays) 可以是多维的（1D，2D，3D····ND）
+    #Matrix是Array的一个小的分支，包含于Array。所以matrix 拥有array的所有特性。
+    #在numpy中matrix的主要优势是：相对简单的乘法运算符号。例如，a和b是两个matrices，那么a*b，就是矩阵积。而不用np.dot()
+
+# a68 = np.ones((10,10))
+# a68[1:-1,1:-1] = 0
+# print(a68)
+
+# a69 = np.ones((5,5))
+# a70 = np.pad(a69,pad_width=2,mode='constant',constant_values=0)
+# print(a70)
+
+# print(0*np.nan)
+# print(np.nan==np.nan)
+# print(np.inf>np.nan)
+# print(np.nan-np.nan)
+# print(0.3==3*0.1)
+
+#棋盘
+# a71 = np.zeros((8,8),dtype=int)
+# a71[1::2,::2] = 1
+# a71[::2,1::2] = 1
+# print(a71)
+
+# a72 = np.array([[0,1,2,3],[10,11,12,13],[20,21,22,23],[30,31,32,33]])
+# a73 = a72[:2]
+# print(a73)
+
+# a74 = np.tile(np.array(((1,0),(0,1))),(4,4))
+# print(a74)
+
+# a75 = np.arange(11)
+# a76 = a75[(3 < a75)&(a75 <= 8)] * -1
+# print(a76)
+# print(sum(range(3),-1))
+
+# np.array(0) /np.array(0)
+# np.array(0) //np.array(0)
+# np.array([np.nan]).astype(int).astype(float)
+
+# a77 = np.random.randint(0,10,10)
+# a78 = np.random.randint(0,10,10)
+# print(np.intersect1d(a77,a78))
+# print(a77)
+
+#显示时间
+yesterday = np.datetime64('today', 'D') - np.timedelta64(1, 'D')
+today = np.datetime64('today', 'D')
+tomorrow = np.datetime64('today', 'D') + np.timedelta64(1, 'D')
+a78 = np.arange('2016-07', '2016-08', dtype='datetime64[D]')
+a79 = np.zeros((5,5))
+a79 += np.arange(5)
+
+#排序
+a80 = np.random.random(10)
+a80.sort()
+
+#求和
+a81 = np.arange(10)
+print(np.add.reduce(a81))
+print(np.sum(a81))
+
+a82 = np.random.randint(0,2,5)
+a83 = np.random.randint(0,2,5)
+print(np.allclose(a82,a83))
+print(np.array_equal(a82,a83))
+
+
+
+
