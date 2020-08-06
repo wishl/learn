@@ -71,7 +71,7 @@ def arange(num):
 # 左闭右开
 def arange_with_length(begin, end, length):
     a = np.arange(begin, end, length)
-    print (a)
+    print(a)
 
 # 构成等差数列的一维数组
 def linspace():
