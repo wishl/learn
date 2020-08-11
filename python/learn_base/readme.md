@@ -6,7 +6,7 @@
 4.在执行到yield语句时，会暂停该方法并返回调用方,并返回yield方法中的参数  
 5.函数终止会抛出StopIteration  
 
-**pymysql 报错 cryptography is required ...**
+**pymysql 报错 cryptography is required ...**  
 1.安装cryptography  
 2.在安装cryptography 失败时使用  
  pip3 install cryptography -i http://pypi.douban.com/simple/ --trusted-host pypi.douban.com --target=/usr/local/lib/python3.7/site-packages  
