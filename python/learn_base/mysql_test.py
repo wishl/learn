@@ -72,6 +72,7 @@ def select_test() -> None:
     result = cursor.fetchmany(1)
     print(result)
 
+
 def insert_test() -> None:
     # 报错：%d format: a number is required, not str
     # sql = "insert into tb_user (name, age) values(%s, %d)"
@@ -80,6 +81,7 @@ def insert_test() -> None:
     mysql = MysqlLer("localhost", 3306, "mysql_test", "666666", "root")
     result = mysql.insert(sql, param)
     print(result)
+
 
 def select_in() -> None:
     sql = "select * from tb_user where id in (%s, %s, %s)"
@@ -92,3 +94,4 @@ def select_in() -> None:
 # select_test()
 # insert_test()
 select_in()
+
