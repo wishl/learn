@@ -19,7 +19,9 @@ def series_test():
     series = create_series()
     print(series)
     # 不存在的index报错
+    print_split()
     print(series['a'])
+    print_split()
     print(series[1])
 
 
@@ -101,14 +103,74 @@ def data_frame_test1():
     print(df.loc['index1': 'index2', ])
 
 
+# append&&insert
 def data_frame_test2():
     df = create_data_frame()
+    print(df)
+    print_split()
+    # 忽略index，此时index变为数字并且index递增
     append = df.append({'a': 5, 'b': 6}, ignore_index=True)
     print(append)
-    series = pd.Series({'a': 5, 'b': 6}, name='3')
-    print(series)
+    print_split()
+    series = pd.Series({'a': 5, 'b': 6}, name='4')
+    # 自定义index
     append1 = append.append(series, ignore_index=False)
     print(append1)
+    print_split()
+    # insert
+    append.insert(0, '-a', [-1, -2, -3])
+    print(append)
+
+
+# update index and column
+def data_frame_test3():
+    df = create_data_frame()
+    df.columns = ['A', 'B']
+    print(df)
+    print_split()
+    # inplace = True 时，直接修改当前df,返回None
+    df1 = df.rename(columns={'A': 'a1', 'B': 'b1'}, index={'index1': 1, 'index2': 2}, inplace=True)
+    print(df)
+    print_split()
+    print(df1)
+    print_split()
+    # inplace = False 时, 返回新的df
+    df1 = df.rename(columns={'a1':'A', 'b1': 'B'}, index={1: 'index1', 2: 'index2'}, inplace=False)
+    print(df)
+    print_split()
+    print(df1)
+
+
+# update data in df
+def data_frame_test4():
+    df = create_data_frame()
+    df.loc['index1', 'a'] = -1
+    print(df)
+    print_split()
+    df.loc['index1', 'a':'b':1] = -2
+    print(df)
+    print_split()
+    df.iloc[0, 1] = -1
+    print(df)
+    print_split()
+    df.iloc[0, 0:2:1] = -3
+    print(df)
+
+
+# 删除
+def data_frame_test5():
+    df = create_data_frame()
+    df1 = df.drop('index1', axis=0)
+    print(df1)
+    print_split()
+    df.drop('index1', axis=0, inplace=True)
+    print(df)
+    print_split()
+    # 弹出
+    pop_result = df.pop('b')
+    print(pop_result)
+    print(type(pop_result))
+    print(df)
 
 
 def data_frame():
@@ -155,7 +217,7 @@ def get_array():
     return carray, darray
 
 
-series_test()
+# series_test()
 # series_test1()
 # series_test2()
 # series_test3()
@@ -163,6 +225,9 @@ series_test()
 # data_frame_test()
 # data_frame_test1()
 # data_frame_test2()
+# data_frame_test3()
+# data_frame_test4()
+data_frame_test5()
 # range_test()
 # data_frame()
 # group_test()
