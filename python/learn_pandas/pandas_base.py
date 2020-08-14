@@ -135,7 +135,7 @@ def data_frame_test3():
     print(df1)
     print_split()
     # inplace = False 时, 返回新的df
-    df1 = df.rename(columns={'a1':'A', 'b1': 'B'}, index={1: 'index1', 2: 'index2'}, inplace=False)
+    df1 = df.rename(columns={'a1': 'A', 'b1': 'B'}, index={1: 'index1', 2: 'index2'}, inplace=False)
     print(df)
     print_split()
     print(df1)
@@ -181,6 +181,7 @@ def data_frame():
     print(df)
 
 
+# 分组
 def group_test():
     carray, darray = get_array()
     # 如果不能sum则不展示
@@ -227,8 +228,8 @@ def get_array():
 # data_frame_test2()
 # data_frame_test3()
 # data_frame_test4()
-data_frame_test5()
+# data_frame_test5()
 # range_test()
 # data_frame()
-# group_test()
+group_test()
 # group_test1()
