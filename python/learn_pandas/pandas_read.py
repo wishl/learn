@@ -7,9 +7,10 @@ import pandas as pd
 def read_mysql():
     print_split('read_sql')
     conn = create_conn()
+    # head ==> limit 默认 5
     df = pd.read_sql(sql="select * from tb_user", con=conn, index_col='id', columns=['id', '名字', '年龄']).head()
     print(df)
-    print_split('read_sql_table')
+    # print_split('read_sql_table')
     # df1 = pd.read_sql_table(table_name='tb_user', con=conn)
     # print_split(df1)
 
