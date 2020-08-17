@@ -15,6 +15,18 @@ def read_mysql():
     # print_split(df1)
 
 
+def read_csv():
+    print_split('read_csv')
+    df = pd.read_csv("./file/test.csv")
+    print(df)
+
+
+def read_excel():
+    print_split("read_excel")
+    df = pd.read_excel("./file/test.xlsx")
+    print(df)
+
+
 def create_conn():
     conn = pymysql.connect(host="localhost", port=3306, user="root",\
                            password="666666", database="mysql_test")
@@ -26,3 +38,5 @@ def print_split(param: str):
 
 
 read_mysql()
+read_csv()
+read_excel()
