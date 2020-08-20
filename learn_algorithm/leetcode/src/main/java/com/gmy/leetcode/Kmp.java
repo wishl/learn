@@ -43,8 +43,58 @@ public class Kmp {
     }
 
 
+    // kmp解法：
+    // 1. 获取PMT：
+    private static int[] getPMT(String s) {
+        // 整体后移一位
+        int[] result = new int[s.length() + 1];
+        // 给第一个赋值0方便开发
+        result[0] = -1;
+        int i = 0;
+        int j = -1;
+        while (i < s.length()) {
+            if (j == -1 || s.charAt(i) == s.charAt(j)) {
+                // 如果相等，给下一个赋值，方便开发
+                i++;
+                j++;
+                result[i] = j;
+            } else {
+                // 从头开始
+                j = result[j];
+            }
+        }
+        return result;
+    }
+
+    // 2. 根据PMT匹配字符串：
+    private static int Kmp(String haystack, String needle) {
+        if (haystack == null) {
+            return -1;
+        }
+        if (needle == null || needle.equals("")) {
+            return 0;
+        }
+        int[] pmt = getPMT(needle);
+        int i = 0, j = 0;
+        while (i < haystack.length() && j < needle.length()) {
+            if (j == -1 || haystack.charAt(i) == needle.charAt(j)) {
+                j++;
+                i++;
+            } else {
+                // 从kmp中获取index在进行匹配
+                j = pmt[j];
+            }
+        }
+        if(j == needle.length()) {
+            // 返回匹配到的开始长度
+            return i - j;
+        }
+        return -1;
+    }
+
+
     public static void main(String[] args) {
-        int i = strStr("", "a");
+        int i = Kmp("123gmygmy", "gm");
         System.out.println(i);
     }
 
