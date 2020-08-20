@@ -92,9 +92,47 @@ public class Kmp {
         return -1;
     }
 
+    // sunday 算法：
+    private static int sunday(String haystack, String needle) {
+        char[] total = haystack.toCharArray();
+        char[] part = needle.toCharArray();
+        int tSize = total.length;
+        int pSize = part.length;
+        int[] move = new int[126];
+        //主串参与匹配最末位字符移动到该位需要移动的位数
+        for (int i= 0;i<126;i++){
+            move[i] = pSize+1;
+        }
+
+        for (int i = 0;i<=pSize;i++){
+            char index = part[i];
+            move[index] = pSize - i;
+        }
+
+        int s = 0;//模式串头部在字符串位置
+
+        int j;//模式串已经匹配了的长度
+
+        while(s <= tSize - pSize) {//到达末尾之前
+            j = 0;
+            while(total[s + j] == part[j]) {
+                j++;
+                if (j >= pSize) {
+                    return s;
+                }
+            }
+
+            int i = s + pSize - 1;
+            if (i < total.length) {
+                s += move[total[i]];
+            }
+        }
+        return -1;
+    }
 
     public static void main(String[] args) {
-        int i = Kmp("123gmygmy", "gm");
+//        int i = sunday("aaaaaa", "bba");
+        int i = sunday("susearch", "search");
         System.out.println(i);
     }
 
