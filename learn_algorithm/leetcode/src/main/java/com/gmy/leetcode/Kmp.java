@@ -1,5 +1,7 @@
 package com.gmy.leetcode;
 
+import java.util.Arrays;
+
 /**
  * 给定一个 haystack 字符串和一个 needle 字符串，
  * 在 haystack 字符串中找出 needle 字符串出现的第一个位置 (从0开始)。如果不存在，则返回  -1。
@@ -132,8 +134,10 @@ public class Kmp {
 
     public static void main(String[] args) {
 //        int i = sunday("aaaaaa", "bba");
-        int i = sunday("susearch", "search");
-        System.out.println(i);
+//        int i = sunday("susearch", "search");
+//        System.out.println(i);
+        int[] ababs = getPMT("abab");
+        System.out.println(Arrays.toString(ababs));
     }
 
 }
