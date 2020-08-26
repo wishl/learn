@@ -50,8 +50,8 @@ public class Sum {
     }
 
     public static void main(String[] args) {
-        int[] ints = {1, 1, 2, 6};
-        List<List<Integer>> lists = combinationSum2(ints, 8);
+        int[] ints = {0,1,2,3};
+        List<List<Integer>> lists = combinationSum2(ints, 6);
         System.out.println(lists);
     }
 
