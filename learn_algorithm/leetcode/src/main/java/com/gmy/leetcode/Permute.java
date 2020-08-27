@@ -1,8 +1,10 @@
 package com.gmy.leetcode;
 
+import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Deque;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -12,6 +14,7 @@ import java.util.List;
  */
 public class Permute {
 
+    // 交换法
     public static void backtrack(int n,
                           ArrayList<Integer> output,
                           List<List<Integer>> res,
@@ -41,8 +44,44 @@ public class Permute {
         return res;
     }
 
+    public static List<List<Integer>> permute1(int[] nums) {
+        int len = nums.length;
+        List<List<Integer>> res = new ArrayList<>();
+        Arrays.sort(nums);
+        if (len == 0) {
+            return res;
+        }
+        // 使用 Deque 是 Java 官方 Stack 类的建议
+        Deque<Integer> path = new ArrayDeque<>(len);
+        boolean[] used = new boolean[nums.length];
+        dfs(nums, len, 0, path, res, used);
+        return res;
+    }
+
+    private static void dfs(int[] nums, int len, int depth, Deque<Integer> path, List<List<Integer>> res, boolean used[]) {
+        if (depth == len) {
+            res.add(new ArrayList<>(path));
+            return;
+        }
+
+        for (int i = 0; i < len; ++i) {
+            if (used[i]) {
+                continue;
+            }
+
+            if (i > 0 && nums[i] == nums[i - 1] && !used[i - 1]) {
+                continue;
+            }
+            path.addLast(nums[i]);
+            used[i] = true;
+            dfs(nums, len, depth + 1, path, res, used);
+            path.removeLast();
+            used[i] = false;
+        }
+    }
+
     public static void main(String[] args) {
-        List<List<Integer>> permute = permute(new int[]{1, 2, 3});
+        List<List<Integer>> permute = permute1(new int[]{1,1,2});
         System.out.println(permute);
     }
 }
