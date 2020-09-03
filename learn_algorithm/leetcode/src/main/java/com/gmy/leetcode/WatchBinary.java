@@ -37,6 +37,7 @@ public class WatchBinary {
         return result;
     }
 
+    // 回溯算法
     private static void getResult(int num, List<String> result, int h, int m, int hIndex, int mIndex, int time) {
         if (time == num) {
             String s =  h + ":" +(m < 10 ? "0"+m:m+"");
@@ -57,9 +58,38 @@ public class WatchBinary {
         }
     }
 
+    // 位运算
+    public static List<String> readBinaryWatch1(int num) {
+        List<String> result = new ArrayList<>();
+        for (int i = 0; i < 12; i++) {
+            for (int j = 0; j < 60; j++) {
+                if (getCount1(i) + getCount1(j) == num) {
+                    result.add(i + ":" + (j < 10 ? "0" + j : j));
+                }
+            }
+        }
+        return result;
+    }
+
+    // 获取一个数的2进制中1的个数
+    private static int getCount1(int i) {
+        int res = 0;
+        while (i != 0) {
+            // 去除最低位的1
+            i = i & (i - 1);
+            res++;
+        }
+        return res;
+    }
+
+
+
     public static void main(String[] args) {
-        List<String> strings = readBinaryWatch(2);
-        System.out.println(strings);
+//        List<String> strings = readBinaryWatch(2);
+//        System.out.println(strings);
+//        List<String> strings1 = readBinaryWatch1(2);
+//        System.out.println(strings1);
+        getCount1(2);
     }
 
 }
