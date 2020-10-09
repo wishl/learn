@@ -37,6 +37,11 @@ public class MinimumOperations {
 
     private static int getMinTimes(String leaves, int times) {
         System.out.println(leaves);
+        // 如果是rrryyyyy的形式则直接返回
+        String y = leaves.substring(leaves.indexOf("y"));
+        if (!y.contains("r")) {
+            return times;
+        }
         int index = leaves.indexOf("r");
         if (index == -1) {
             return times;
@@ -58,8 +63,9 @@ public class MinimumOperations {
     }
 
     public static void main(String[] args) {
-//        int result = minimumOperations("yryyyyrry");
-        int result = minimumOperations("ryyyrrrryrryyyyrrryrryyyryrryryyrryyyryyryyyyryrrryryyryrryyryryryrryyrryyyryrrryryryrrrryrrrrrryry");
+        int result = minimumOperations("rrryyyrryyyrr");
+//        int result = minimumOperations("rryrrrryyyyyrrr");
+//        int result = minimumOperations("ryyyrrrryrryyyyrrryrryyyryrryryyrryyyryyryyyyryrrryryyryrryyryryryrryyrryyyryrrryryryrrrryrrrrrryry");
 //        int result = getMinTimes("yrrrrrry", 0);
 
         System.out.println(result);
