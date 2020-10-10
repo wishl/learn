@@ -1,4 +1,4 @@
-package com.gmy.leetcode;
+package com.gmy.leetcode.doublepoint;
 
 import java.util.HashSet;
 import java.util.Set;
