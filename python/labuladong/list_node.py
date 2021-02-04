@@ -1,5 +1,9 @@
 # -*- coding: utf-8 -*-
 
+"""
+ListNode 公共类
+"""
+
 
 class ListNode(object):
     pass
