@@ -91,7 +91,9 @@ def select_in() -> None:
     result = cursor.fetchall()
     print(result)
 
-# select_test()
+select_test()
 # insert_test()
-select_in()
+
+
+# select_in()
 
