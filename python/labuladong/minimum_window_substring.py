@@ -17,12 +17,16 @@ def min_substring(source: str, target: str) -> str:
     valid = 0
     length = sys.maxsize
     for s in target:
-        need.setdefault(need.get(s, 0) + 1)
+        if s in need:
+            need[s] += 1
+        else:
+            need[s] = 1
+        data_map[s] = 0
     while right < source.__len__():
         c = source[right]
         if c in need:
-            data_map.set(c, data_map.get(c, 0) + 1)
-            if data_map.get(c) == need.get(c):
+            data_map[c] = data_map[c] + 1
+            if data_map[c] == need[c]:
                 valid += 1
         right += 1
         while valid == need.__len__():
@@ -32,8 +36,8 @@ def min_substring(source: str, target: str) -> str:
                 start = left
                 end = right
             if c in need:
-                data_map.set(c, data_map.get(c) - 1)
-                if data_map.get(c) == need.get(c):
+                data_map[c] -= 1
+                if data_map[c] == need[c]:
                     valid -= 1
             left += 1
     return source[start: end]

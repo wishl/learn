@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 
-
 def fibonacci(num):
     a, b = 0, 1
     if num == 1:
@@ -12,7 +11,6 @@ def fibonacci(num):
         a, b = b, a + b
         c = c + 1
     return b
-
 
 # 当遇到break时不会运行else
 def while_else():
