@@ -77,7 +77,7 @@ def insert_test() -> None:
     # 报错：%d format: a number is required, not str
     # sql = "insert into tb_user (name, age) values(%s, %d)"
     sql = "insert into tb_user (name, age) values(%s, %s)"
-    param = [("gmy1", 20), ("wishl1", 20)]
+    param = [["gmy1", 20], ["wishl1", 20]]
     mysql = MysqlLer("localhost", 3306, "mysql_test", "666666", "root")
     result = mysql.insert(sql, param)
     print(result)
@@ -91,8 +91,9 @@ def select_in() -> None:
     result = cursor.fetchall()
     print(result)
 
-select_test()
-# insert_test()
+
+# select_test()
+insert_test()
 
 
 # select_in()
