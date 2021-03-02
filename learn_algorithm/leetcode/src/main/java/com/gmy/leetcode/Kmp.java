@@ -136,8 +136,9 @@ public class Kmp {
 //        int i = sunday("aaaaaa", "bba");
 //        int i = sunday("susearch", "search");
 //        System.out.println(i);
-        int[] ababs = getPMT("abab");
-        System.out.println(Arrays.toString(ababs));
+//        int[] ababs = getPMT("abab");
+        int kmp = Kmp("abcde", "cde");
+        System.out.println(kmp);
     }
 
 }
