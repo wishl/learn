@@ -2,6 +2,7 @@
 
 from typing import Dict
 
+
 # 获取好后缀
 def get_bmgs(pattern: str) -> Dict[str, int]:
     # 预生成好后缀表
@@ -56,11 +57,14 @@ def bm(source: str, target: str) -> int:
             length = max(bmbc_length, bmgs_length)
             i += j + 1 - length
             j = target_length - 1
+    # 因为如果i < len(source) 时 说明j < 0, i 多减一次需要加回来
     return i + 1 if i < len(source) else -1
 
 
 def main():
-    result = bm("this is a simple example", "example")
+    # result = bm("this is a simple example", "example")
+    # print(result)
+    result = get_bmgs('abcabc')
     print(result)
 
 
