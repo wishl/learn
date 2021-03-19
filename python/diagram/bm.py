@@ -1,5 +1,8 @@
 # -*- coding: utf8 -*-
-
+"""
+bm算法详解 https://blog.csdn.net/qq_29423387/article/details/86531392
+好后缀和坏字符
+"""
 from typing import Dict
 
 
@@ -7,7 +10,7 @@ from typing import Dict
 def get_bmgs(pattern: str) -> Dict[str, int]:
     # 预生成好后缀表
     bmgs = dict()
-    print(len(pattern))
+    # print(len(pattern))
     # 无后缀仅根据坏字移位符规则
     bmgs[''] = 0
     for i in range(len(pattern)):
@@ -62,10 +65,11 @@ def bm(source: str, target: str) -> int:
 
 
 def main():
-    # result = bm("this is a simple example", "example")
-    # print(result)
-    result = get_bmgs('abcabc')
+    result = bm("this is a simple example", "example")
+    # result = bm("ABCABA", "ABA")
     print(result)
+    # result = get_bmgs('abcabc')
+    # print(result)
 
 
 if __name__ == '__main__':
