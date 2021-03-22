@@ -20,12 +20,12 @@ def interval_schedule(intvs: List[List[int]]) -> int:
         start = intvs[i][0]
         if start >= end:
             count += 1
-            end = start
+            end = intvs[i][1]
     return count
 
 
 def main():
-    intvs = [[1, 1], [1, 2], [1, 3]]
+    intvs = [[1, 2], [2, 3], [3, 4], [1, 3]]
     print(interval_schedule(intvs))
 
 

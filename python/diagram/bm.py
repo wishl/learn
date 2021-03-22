@@ -21,7 +21,7 @@ def get_bmgs(pattern: str) -> Dict[str, int]:
             ngs = pattern[j:j + i + 1]
             # 记录模式串中好后缀最靠右位置（除结尾处）
             if gs == ngs:
-                # 因为ngs的最后index为length
+                # 因为ngs的最后index为length (length - (j + i + 1))
                 bmgs[gs] = len(pattern) - j - i - 1
     return bmgs
 
@@ -65,11 +65,11 @@ def bm(source: str, target: str) -> int:
 
 
 def main():
-    result = bm("this is a simple example", "example")
-    # result = bm("ABCABA", "ABA")
-    print(result)
-    # result = get_bmgs('abcabc')
+    # result = bm("this is a simple example", "example")
+    result = get_bmgs("ABA")
     # print(result)
+    # result = get_bmgs('abcabc')
+    print(result)
 
 
 if __name__ == '__main__':
