@@ -2,6 +2,10 @@ package com.gmy.leetcode.link;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
+import java.util.concurrent.locks.Condition;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
+import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 /**
  * 判断链表是否为回文链表
@@ -14,6 +18,14 @@ public class IsPalindrome {
 
     // 递归
     public boolean isPalindrome(ListNode listNode) {
+//        Lock lock = ReentrantReadWriteLock.ReadLock();
+//        Condition condition = lock.newCondition();
+//        try {
+//            condition.await();
+//        } catch (InterruptedException e) {
+//            throw new RuntimeException(e);
+//        }
+//        condition.signal();
         this.head = listNode;
         boolean valid = valid(listNode);
         return valid;
@@ -51,7 +63,7 @@ public class IsPalindrome {
         IsPalindrome isPalindrome = new IsPalindrome();
         ListNode listNode = new ListNode(1);
         listNode.setNext(2).setNext(2).setNext(1);
-        boolean palindrome = isPalindrome.isPalindrome1(listNode);
+        boolean palindrome = isPalindrome.isPalindrome(listNode);
         System.out.println(palindrome);
     }
 

@@ -7,9 +7,6 @@ public class RevertLink {
 
 
     public static ListNode revert(ListNode now, ListNode before) {
-        if (now == null) {
-            return null;
-        }
         if (now.next == null) {
             now.next = before;
             return now;
