@@ -24,7 +24,7 @@
     </parent>
 
     <properties>
-        <spring.boot.version>2.0.7.RELEASE</spring.boot.version>
+        <spring.boot.version>2.5.12</spring.boot.version>
         <mybatis-spring-boot-starter.version>2.1.0</mybatis-spring-boot-starter.version>
         <invoker.version>1.0-SNAPSHOT</invoker.version>
     </properties>
