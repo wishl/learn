@@ -1,6 +1,5 @@
 package com.gmy.leetcode.doublepoint;
 
-import sun.tools.attach.HotSpotVirtualMachine;
 
 /**
  * 给你两个版本号 version1 和 version2 ，请你比较它们。

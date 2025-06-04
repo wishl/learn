@@ -1,6 +1,5 @@
 package com.gmy.leetcode;
 
-import com.sun.jmx.snmp.SnmpNull;
 
 import java.util.ArrayList;
 import java.util.List;
