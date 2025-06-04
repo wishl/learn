@@ -24,7 +24,7 @@ public class AllSubSequence {
         return res;
     }
 
-    private static void dfs(int[] nums, int len, int depth, Deque<Integer> path, List<List<Integer>> res, boolean used[]) {
+    private static void dfs(int[] nums, int len, int depth, Deque<Integer> path, List<List<Integer>> res, boolean[] used) {
         if (depth == len) {
             res.add(new ArrayList<>(path));
             return;
