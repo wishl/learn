@@ -1,4 +1,4 @@
-package com.gmy.leetcode.hot100;
+package com.gmy.leetcode.hot100.array;
 
 import com.gmy.leetcode.link.ListNode;
 
