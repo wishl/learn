@@ -52,11 +52,25 @@ public class RemoveDuplicates {
         return p + 1;
     }
 
+    public static int removeDuplicatesStack(int[] nums) {
+        int stackSize = 2; // 栈的大小，前两个元素默认保留
+        for (int i = 2; i < nums.length; i++) {
+            if (nums[i] != nums[stackSize - 2]) { // 和栈顶下方的元素比较
+                nums[stackSize++] = nums[i]; // 入栈
+            }
+        }
+        return Math.min(stackSize, nums.length);
+    }
+
 
     public static void main(String[] args) {
-        int[] i = new int[] {1, 1, 2, 3, 4, 4};
-        int result = removeDuplicates(i);
-        System.out.println(result);
+//        int[] i = new int[] {1, 1, 2, 3, 4, 4};
+        int[] i = new int[] {1, 1, 2, 2, 2, 3, 4, 4};
+
+//        int result = removeDuplicates(i);
+        int result1 = removeDuplicatesStack(i);
+//        System.out.println(result);
+        System.out.println(result1);
         System.out.println(Arrays.toString(i));
     }
 

@@ -1,6 +1,6 @@
 package com.gmy.leetcode.dac;
 
-import lombok.AllArgsConstructor;
+//import lombok.AllArgsConstructor;
 
 import java.math.BigDecimal;
 import java.util.Arrays;
@@ -44,10 +44,14 @@ public class KClosest {
         return distancePoint;
     }
 
-    @AllArgsConstructor
     class Distance {
         private Double distance;
         private int[] point;
+
+        public Distance(Double distance, int[] point) {
+            this.distance = distance;
+            this.point = point;
+        }
     }
 
     public static void main(String[] args) {

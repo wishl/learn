@@ -1,7 +1,6 @@
 package com.gmy.leetcode.review;
 
 import com.gmy.leetcode.link.ListNode;
-import lombok.val;
 
 import java.util.ArrayDeque;
 import java.util.Deque;

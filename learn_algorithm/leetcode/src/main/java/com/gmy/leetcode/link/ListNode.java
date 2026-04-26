@@ -23,7 +23,7 @@ public class ListNode {
         return this.next;
     }
 
-    public static ListNode build(int[] arr) {
+    public static ListNode build(int... arr) {
         if (arr == null) {
             return null;
         }
@@ -35,6 +35,19 @@ public class ListNode {
         }
         return head;
     }
+
+//    public static ListNode build(int[] arr) {
+//        if (arr == null) {
+//            return null;
+//        }
+//        ListNode listNodes = new ListNode(arr[0]);
+//        ListNode head = listNodes;
+//        for (int i = 1; i < arr.length; i++) {
+//            listNodes.setNext(arr[i]);
+//            listNodes = listNodes.next;
+//        }
+//        return head;
+//    }
 
     @Override
     public String toString() {

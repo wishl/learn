@@ -1,7 +1,7 @@
 package com.gmy.leetcode.top100;
 
 import com.gmy.leetcode.link.ListNode;
-import lombok.val;
+//import lombok.val;
 
 /**
  * 给定一个单链表 L 的头节点 head ，单链表 L 表示为：
@@ -41,7 +41,7 @@ public class _0143_ReorderList {
     private static ListNode revert(ListNode node) {
         ListNode pre = null, tmp = node;
         while (tmp != null) {
-            val next = tmp.next;
+            ListNode next = tmp.next;
             tmp.next = pre;
             pre = tmp;
             tmp = next;
